@@ -8,16 +8,30 @@ import { RepairSelectionComponent } from './reparations/repair-selection/repair-
 import { PriceSelectionComponent } from './reparations/price-selection/price-selection.component';
 import { ConfirmSelectionComponent } from './reparations/confirm-selection/confirm-selection.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductsGuards } from './guards/products.guard';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: ':id', component: HomeComponent, canActivate: [ProductsGuards] },
 
-  { path: "reparatie", component: ReparationMainComponent },
-  { path: "reparatie/:device/merk", component: BrandSelectionComponent },
-  { path: "reparatie/:device/:brand/model", component: ModelSelectionComponent },
-  { path: "reparatie/:device/:brand/:model/soort", component: RepairSelectionComponent },
-  { path: "reparatie/:device/:brand/:model/:repair/pakket", component: PriceSelectionComponent },
-  { path: "reparatie/:device/:brand/:model/:repair/:package/bevestig", component: ConfirmSelectionComponent },
+  { path: 'reparatie', component: ReparationMainComponent },
+  { path: 'reparatie/:device/merk', component: BrandSelectionComponent },
+  {
+    path: 'reparatie/:device/:brand/model',
+    component: ModelSelectionComponent
+  },
+  {
+    path: 'reparatie/:device/:brand/:model/soort',
+    component: RepairSelectionComponent
+  },
+  {
+    path: 'reparatie/:device/:brand/:model/:repair/pakket',
+    component: PriceSelectionComponent
+  },
+  {
+    path: 'reparatie/:device/:brand/:model/:repair/:package/bevestig',
+    component: ConfirmSelectionComponent
+  },
 
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
@@ -27,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

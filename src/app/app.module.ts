@@ -14,6 +14,7 @@ import { PriceSelectionComponent } from './reparations/price-selection/price-sel
 import { ConfirmSelectionComponent } from './reparations/confirm-selection/confirm-selection.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
+import { ProductsGuards } from './guards/products.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ProductsGuards],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
